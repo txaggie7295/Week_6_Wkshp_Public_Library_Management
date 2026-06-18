@@ -214,4 +214,9 @@ SELECT a.name AS table_name,
 
 ### 4. For tasks 1-3, how could you combine them into a single, more complex query that finds recent history books with multiple copies?
 
+- **Combine the filters in the 'Where' statement.**
+
 ### 5. What performance considerations should be kept in mind when running complex joins and aggregations on large library datasets?
+
++ - **Clean joins that are '=' instead of '<,>' more efficient**
++ - **Large data sets with subqueries and multiple comoutations can slow the db down or even error out.**
