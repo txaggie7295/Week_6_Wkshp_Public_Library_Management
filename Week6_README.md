@@ -161,8 +161,7 @@ SELECT a.last_name || ', ' || a.first_name AS patron_name,
 
 ![Chart #10](charts/chart10.png)
 
-### 11.  Time-based analysis: Analyze monthly borrowing trends. 
-     Show the year, month, number of loans, and number of unique patrons for each month.
+### 11.  Time-based analysis: Analyze monthly borrowing trends.  Show the year, month, number of loans, and number of unique patrons for each month.
 
 ```sql
 SELECT strftime('%Y-%m', a.checkout_date) AS loan_month,
