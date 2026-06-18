@@ -197,9 +197,9 @@ SELECT a.name AS table_name,
 
 # Discussion Questions
 
-### 1. In our library database, we track which branch a book was borrowed from, but books can exist at multiple branches. How would you modify the schema to track the actual inventory at each branch?
+1. In our library database, we track which branch a book was borrowed from, but books can exist at multiple branches. How would you modify the schema to track the actual inventory at each branch?
 
-##### Create an inventory table with branch_id and book_id
+       - Create an inventory table with branch_id and book_id
 
 ### 2. Based on the provided data model, what business questions could library administrators answer using SQL queries that we haven't covered in our exercise?
 
