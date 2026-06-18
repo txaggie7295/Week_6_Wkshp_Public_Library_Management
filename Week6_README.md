@@ -23,6 +23,8 @@ SELECT title,
        copies_owned > 5;
 ```
 
+![Chart #2](charts/chart2.png)
+
 ### 3.  Pattern Matching: List all books whose titles contain the word "History".
 
 ```sql
@@ -31,6 +33,8 @@ SELECT book_id,
   FROM books
  WHERE title LIKE ('%history%');
 ```
+![Chart #3](charts/chart3.png)
+
 
 ### 4.  JOIN Operations: Display loan information (loan_id, checkout_date, due_date) along with patron details (first_name, last_name, email) for all loans made in January 2023.
 
