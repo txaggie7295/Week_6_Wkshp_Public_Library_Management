@@ -51,6 +51,8 @@ SELECT a.loan_id,
  WHERE a.checkout_date LIKE ('2023-01%');
 ```
 
+![Chart #4](charts/chart4.png)
+
 ### 5.  Multi-table JOIN: Show book details (title, author's full name, genre_name) for each loan, along with the checkout_date and due_date.
 
 ```sql
@@ -69,6 +71,8 @@ SELECT a.loan_id,
        genres d ON b.genre_id = d.genre_id;
 ```
 
+![Chart #5](charts/chart5.png)
+
 ### 6.  Self JOIN: Find pairs of patrons who live in the same city. Show both patrons' names and their city.
  
 ```sql 
@@ -83,6 +87,8 @@ SELECT a.first_name || ' ' || a.last_name AS patron_1,
 HAVING COUNT( * ) = 1
  ORDER BY a.city;
 ```
+
+![Chart #6](charts/chart6.png)
 
 ### 7.  Multi-table JOIN with filtering: Find all fiction books (genre_id = 1) that have been borrowed, along with the patron name and the branch where they were borrowed from.
 
@@ -102,6 +108,8 @@ SELECT a.title,
  ORDER BY a.title;
 ```
 
+![Chart #7](charts/chart7.png)
+
 # Part 2: Aggregation and GROUP BY Operations
 
 ### 8.	COUNT aggregation: Count the number of books in each genre category.
@@ -116,6 +124,8 @@ SELECT a.genre_id,
  GROUP BY a.genre_id,
           b.genre_name;
 ```
+
+![Chart #8](charts/chart8.png)
 
 ### 9.  Multiple aggregations: Calculate the average, minimum, and maximum loan duration (days between checkout and return) for each library branch. Include only returned books.
 
@@ -132,6 +142,8 @@ SELECT a.branch_name,
  GROUP BY a.branch_name;
 ``` 
 
+![Chart #9](charts/chart9.png)
+
 ### 10.  Conditional aggregation: Find patrons with overdue books (due_date < CURRENT_DATE and return_date = ' '), along with the count of overdue books they have.
 
 ```sql 
@@ -147,6 +159,8 @@ SELECT a.last_name || ', ' || a.first_name AS patron_name,
  ORDER BY patron_name;
 ``` 
 
+![Chart #10](charts/chart10.png)
+
 ### 11.  Time-based analysis: Analyze monthly borrowing trends. 
      Show the year, month, number of loans, and number of unique patrons for each month.
 
@@ -157,6 +171,8 @@ SELECT strftime('%Y-%m', a.checkout_date) AS loan_month,
   FROM loans a
  GROUP BY strftime('%Y-%m', a.checkout_date);
 ```
+
+![Chart 11](charts/chart11.png)
 
 ### BONUS: Write a query to create a simple data dictionary for the library database schema, listing table names, column names, data types, and whether they are primary keys.
 
@@ -177,6 +193,9 @@ SELECT a.name AS table_name,
  ORDER BY table_name,
           b.cid;
 ```
+
+![Chart #12](charts/chart12.png)
+
 # Discussion Questions
 
 ### 1. In our library database, we track which branch a book was borrowed from, but books can exist at multiple branches. How would you modify the schema to track the actual inventory at each branch?
