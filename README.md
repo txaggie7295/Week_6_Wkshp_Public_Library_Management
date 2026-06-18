@@ -1,6 +1,6 @@
-### Part 1: Basic SQL Operations and JOIN Queries
+## Part 1: Basic SQL Operations and JOIN Queries
 
-## 1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000,    ordered by publication year (newest first).    
+# 1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000,    ordered by publication year (newest first).    
     
 SELECT title,
        publication_year
@@ -8,7 +8,7 @@ SELECT title,
  WHERE publication_year > 2000
  ORDER BY publication_year DESC;
 
-## 2.  Filtering: Find all books with more than 5 copies owned in the fiction genre (genre_id = 1).
+# 2.  Filtering: Find all books with more than 5 copies owned in the fiction genre (genre_id = 1).
 
 SELECT title,
        genre_id,
@@ -17,14 +17,14 @@ SELECT title,
  WHERE genre_id = 1 AND
        copies_owned > 5;
 
-## 3.  Pattern Matching: List all books whose titles contain the word "History".
+# 3.  Pattern Matching: List all books whose titles contain the word "History".
 
 SELECT book_id,
        title
   FROM books
  WHERE title LIKE ('%history%');
 
-## 4.  JOIN Operations: Display loan information (loan_id, checkout_date, due_date) along with patron           details (first_name, last_name, email) for all loans made in January 2023.
+# 4.  JOIN Operations: Display loan information (loan_id, checkout_date, due_date) along with patron           details (first_name, last_name, email) for all loans made in January 2023.
 
 SELECT a.loan_id,
        a.checkout_date,
@@ -37,7 +37,7 @@ SELECT a.loan_id,
        patrons b ON a.patron_id = b.patron_id
  WHERE a.checkout_date LIKE ('2023-01%');
 
-## 5.  Multi-table JOIN: Show book details (title, author's full name, genre_name) for each loan,     along with the checkout_date and due_date.
+# 5.  Multi-table JOIN: Show book details (title, author's full name, genre_name) for each loan,     along with the checkout_date and due_date.
 
 SELECT a.loan_id,
        a.checkout_date,
@@ -53,7 +53,7 @@ SELECT a.loan_id,
        LEFT JOIN
        genres d ON b.genre_id = d.genre_id;
 
- ## 6.  Self JOIN: Find pairs of patrons who live in the same city. Show both patrons' names and their           city.
+ # 6.  Self JOIN: Find pairs of patrons who live in the same city. Show both patrons' names and their           city.
  
 SELECT a.first_name || ' ' || a.last_name AS patron_1,
        b.first_name || ' ' || b.last_name AS patron_2,
@@ -66,7 +66,7 @@ SELECT a.first_name || ' ' || a.last_name AS patron_1,
 HAVING COUNT( * ) = 1
  ORDER BY a.city;
 
-## 7.  Multi-table JOIN with filtering: Find all fiction books (genre_id = 1) that have been borrowed,          along with the patron name and the branch where they were borrowed from.
+# 7.  Multi-table JOIN with filtering: Find all fiction books (genre_id = 1) that have been borrowed,          along with the patron name and the branch where they were borrowed from.
 
 SELECT a.title,
        c.last_name || ', ' || c.first_name AS patron_name,
@@ -82,9 +82,8 @@ SELECT a.title,
        b.book_id IS NOT NULL
  ORDER BY a.title;
 
-/*
-8.	COUNT aggregation: Count the number of books in each genre category.
-*/
+
+# 8.  COUNT aggregation: Count the number of books in each genre category.
 
 SELECT a.genre_id,
        b.genre_name,
@@ -95,10 +94,7 @@ SELECT a.genre_id,
  GROUP BY a.genre_id,
           b.genre_name;
 
-/*
-9.  Multiple aggregations: Calculate the average, minimum, and maximum loan duration 
-    (days between checkout and return) for each library branch. Include only returned books.
-*/
+# 9.  Multiple aggregations: Calculate the average, minimum, and maximum loan duration (days between           checkout and return) for each library branch. Include only returned books.
 
 SELECT a.branch_name,
        count(b.return_date) AS book_returns,
@@ -111,10 +107,7 @@ SELECT a.branch_name,
  WHERE b.return_date <> ''
  GROUP BY a.branch_name;
  
-/*
-10.  Conditional aggregation: Find patrons with overdue books (due_date < CURRENT_DATE and return_date = ' '), 
-     along with the count of overdue books they have.
- */
+# 10.  Conditional aggregation: Find patrons with overdue books (due_date < CURRENT_DATE and return_date        = ' '), along with the count of overdue books they have.
  
 SELECT a.last_name || ', ' || a.first_name AS patron_name,
        count(loan_id) AS books_overdue
