@@ -219,4 +219,4 @@ SELECT a.name AS table_name,
 ### 5. What performance considerations should be kept in mind when running complex joins and aggregations on large library datasets?
 
 - **Clean joins that are '=' instead of '<,>' more efficient**
-- **Large data sets with subqueries and multiple comoutations can slow the db down or even error out.**
+- **Large data sets with subqueries and multiple computations/aggregations can slow the db down or even error out.**
