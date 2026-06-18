@@ -1,6 +1,6 @@
 # Part 1: Basic SQL Operations and JOIN Queries
 
-## 1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000,     ordered by publication year (newest first).    
+### 1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000,     ordered by publication year (newest first).    
 
 ```sql
 SELECT title,
@@ -10,7 +10,7 @@ SELECT title,
  ORDER BY publication_year DESC;
 ```
 
-## 2.  Filtering: Find all books with more than 5 copies owned in the fiction genre (genre_id = 1).
+### 2.  Filtering: Find all books with more than 5 copies owned in the fiction genre (genre_id = 1).
 
 ```sql
 SELECT title,
@@ -21,7 +21,7 @@ SELECT title,
        copies_owned > 5;
 ```
 
-## 3.  Pattern Matching: List all books whose titles contain the word "History".
+### 3.  Pattern Matching: List all books whose titles contain the word "History".
 
 ```sql
 SELECT book_id,
@@ -30,7 +30,7 @@ SELECT book_id,
  WHERE title LIKE ('%history%');
 ```
 
-# 4.  JOIN Operations: Display loan information (loan_id, checkout_date, due_date) along with patron details (first_name, last_name, email) for all loans made in January 2023.
+### 4.  JOIN Operations: Display loan information (loan_id, checkout_date, due_date) along with patron details (first_name, last_name, email) for all loans made in January 2023.
 
 ```sql
 SELECT a.loan_id,
@@ -45,7 +45,7 @@ SELECT a.loan_id,
  WHERE a.checkout_date LIKE ('2023-01%');
 ```
 
-## 5.  Multi-table JOIN: Show book details (title, author's full name, genre_name) for each loan, along with the checkout_date and due_date.
+### 5.  Multi-table JOIN: Show book details (title, author's full name, genre_name) for each loan, along with the checkout_date and due_date.
 
 ```sql
 SELECT a.loan_id,
@@ -63,7 +63,7 @@ SELECT a.loan_id,
        genres d ON b.genre_id = d.genre_id;
 ```
 
-## 6.  Self JOIN: Find pairs of patrons who live in the same city. Show both patrons' names and their city.
+### 6.  Self JOIN: Find pairs of patrons who live in the same city. Show both patrons' names and their city.
  
 ```sql 
 SELECT a.first_name || ' ' || a.last_name AS patron_1,
@@ -78,7 +78,7 @@ HAVING COUNT( * ) = 1
  ORDER BY a.city;
 ```
 
-## 7.  Multi-table JOIN with filtering: Find all fiction books (genre_id = 1) that have been borrowed, along with the patron name and the branch where they were borrowed from.
+### 7.  Multi-table JOIN with filtering: Find all fiction books (genre_id = 1) that have been borrowed, along with the patron name and the branch where they were borrowed from.
 
 ```sql
 SELECT a.title,
@@ -98,7 +98,7 @@ SELECT a.title,
 
 # Part 2: Aggregation and GROUP BY Operations
 
-## 8.	COUNT aggregation: Count the number of books in each genre category.
+### 8.	COUNT aggregation: Count the number of books in each genre category.
 
 ```sql
 SELECT a.genre_id,
@@ -111,7 +111,7 @@ SELECT a.genre_id,
           b.genre_name;
 ```
 
-## 9.  Multiple aggregations: Calculate the average, minimum, and maximum loan duration (days between checkout and return) for each library branch. Include only returned books.
+### 9.  Multiple aggregations: Calculate the average, minimum, and maximum loan duration (days between checkout and return) for each library branch. Include only returned books.
 
 ```sql
 SELECT a.branch_name,
@@ -126,7 +126,7 @@ SELECT a.branch_name,
  GROUP BY a.branch_name;
 ``` 
 
-## 10.  Conditional aggregation: Find patrons with overdue books (due_date < CURRENT_DATE and return_date = ' '), along with the count of overdue books they have.
+### 10.  Conditional aggregation: Find patrons with overdue books (due_date < CURRENT_DATE and return_date = ' '), along with the count of overdue books they have.
 
 ```sql 
 SELECT a.last_name || ', ' || a.first_name AS patron_name,
@@ -141,7 +141,7 @@ SELECT a.last_name || ', ' || a.first_name AS patron_name,
  ORDER BY patron_name;
 ``` 
 
-## 11.  Time-based analysis: Analyze monthly borrowing trends. 
+### 11.  Time-based analysis: Analyze monthly borrowing trends. 
      Show the year, month, number of loans, and number of unique patrons for each month.
 
 ```sql
@@ -152,7 +152,7 @@ SELECT strftime('%Y-%m', a.checkout_date) AS loan_month,
  GROUP BY strftime('%Y-%m', a.checkout_date);
 ```
 
-## BONUS: Write a query to create a simple data dictionary for the library database schema, listing table names, column names, data types, and whether they are primary keys.
+### BONUS: Write a query to create a simple data dictionary for the library database schema, listing table names, column names, data types, and whether they are primary keys.
 
 ```sql
 SELECT a.name AS table_name,
