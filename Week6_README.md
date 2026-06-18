@@ -1,10 +1,8 @@
---Part 1: Basic SQL Operations and JOIN Queries
+###Part 1: Basic SQL Operations and JOIN Queries
 
-/*
-1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000, 
+##1.  Basic Selection: Retrieve the titles and publication years of all books published after 2000, 
     ordered by publication year (newest first).    
-*/
-
+    
 SELECT title,
        publication_year
   FROM books
