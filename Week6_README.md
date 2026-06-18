@@ -197,13 +197,20 @@ SELECT a.name AS table_name,
 
 # Discussion Questions
 
-#### 1. In our library database, we track which branch a book was borrowed from, but books can exist at multiple branches. How would you modify the schema to track the actual inventory at each branch?
+### 1. In our library database, we track which branch a book was borrowed from, but books can exist at multiple branches. How would you modify the schema to track the actual inventory at each branch?
 
 - **Create an inventory table with branch_id and book_id**
 
 ### 2. Based on the provided data model, what business questions could library administrators answer using SQL queries that we haven't covered in our exercise?
 
+- **Which patrons should be able to borrow books until they return the ones they have or pay the fine.**
+- **Which books are more popular at certain branches and how to manage inventory based on that.**
+
 ### 3. How would you extend this schema to track additional patron interactions, such as reserved books, late fees, or participation in library programs?
+
+- **Add an inventory table.**
+- **Add late fees per loan_id in loans table.**
+- **Add genre_id and auther_id to loans table.**
 
 ### 4. For tasks 1-3, how could you combine them into a single, more complex query that finds recent history books with multiple copies?
 
