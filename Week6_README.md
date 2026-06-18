@@ -10,6 +10,8 @@ SELECT title,
  ORDER BY publication_year DESC;
 ```
 
+![Chart #1](charts/chart1.png)
+
 ### 2.  Filtering: Find all books with more than 5 copies owned in the fiction genre (genre_id = 1).
 
 ```sql
